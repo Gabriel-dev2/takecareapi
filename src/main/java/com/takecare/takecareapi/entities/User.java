@@ -2,8 +2,6 @@ package com.takecare.takecareapi.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
