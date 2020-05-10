@@ -1,4 +1,4 @@
-package com.takecare.takecareapi.dto;
+package com.takecare.takecareapi.api.dto;
 
 import lombok.Data;
 
