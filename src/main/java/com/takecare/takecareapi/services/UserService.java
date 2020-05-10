@@ -1,12 +1,13 @@
 package com.takecare.takecareapi.services;
 
+import com.takecare.takecareapi.api.dto.UserResponseDTO;
 import com.takecare.takecareapi.entities.Paciente;
 
 public interface UserService {
 
-    Paciente createUser(String userName, String userPassword, String userEmail, String userPlanCard);
+    String createUser(String userName, String cpf, String endereco, int numeroCasa);
 
-    Paciente findUserById(Long id);
+    UserResponseDTO findUserById(int id);
 
     Paciente findUserByName(String userName);
 
