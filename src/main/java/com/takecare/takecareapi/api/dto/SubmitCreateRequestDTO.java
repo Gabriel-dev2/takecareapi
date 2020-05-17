@@ -1,15 +1,26 @@
 package com.takecare.takecareapi.api.dto;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.takecare.takecareapi.entities.Paciente;
 
 import lombok.Data;
 
 @Data
 public class SubmitCreateRequestDTO {
+    
     @NotNull
-    @Valid
-    private Paciente paciente;
+    private String name;
+
+    @NotNull
+    private String cpf;
+
+    @NotNull
+    private String senha;
+
+    @NotNull
+    private String endereco;
+
+    @NotNull
+    private int numeroCasa;
+
 }
