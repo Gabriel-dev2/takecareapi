@@ -68,7 +68,8 @@ public class UserController {
          @ApiResponse(code = 200, message = "User Created"),
          @ApiResponse(code = 400, message = "User already exists")})   
      public ResponseEntity<SubmitResponseDTO> createUser(@RequestBody SubmitCreateRequestDTO submit) {
-        return null;
+        SubmitResponseDTO response = this.userService.createUser(submit);
+        return ResponseEntity.ok().body(response);
      }    
 
 }
