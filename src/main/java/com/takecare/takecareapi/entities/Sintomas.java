@@ -19,7 +19,7 @@ import lombok.Data;
 public class Sintomas {
     
     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idsintomas")
     private Integer idSintoma;
 
