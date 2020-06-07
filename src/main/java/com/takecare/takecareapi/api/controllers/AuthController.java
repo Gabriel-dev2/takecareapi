@@ -5,6 +5,7 @@ import com.takecare.takecareapi.api.dto.SubmitLoginRequestDTO;
 import com.takecare.takecareapi.services.AuthenticationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +37,22 @@ public class AuthController {
         @ApiResponse(code = 401, message = "Unauthorized")
     })
     public ResponseEntity<LoginResponseDTO> authenticate(@RequestBody SubmitLoginRequestDTO body){
-        LoginResponseDTO response = auth.authenticate(body);
-        return ResponseEntity.ok().body(response);
+        ResponseEntity<LoginResponseDTO> responseEntity = null;
+        
+        try{
+            LoginResponseDTO response = auth.authenticate(body);
+            if(response != null && response.getMessage().equals("OK")){
+                responseEntity = new ResponseEntity<LoginResponseDTO>(response, HttpStatus.OK);
+            } else if(response.getMessage().equals("Login incorreto ou não existe") || response.getMessage().equals("Senha incorreta")){
+                responseEntity = new ResponseEntity<LoginResponseDTO>(response, HttpStatus.UNAUTHORIZED);
+            }
+        } catch(Exception e) {
+            LoginResponseDTO responseDTO = new LoginResponseDTO();
+            responseDTO.setMessage(e.getMessage());
+            responseEntity = new ResponseEntity<LoginResponseDTO>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+            return responseEntity;
+        }
+        
+        return responseEntity;
     }
 }
