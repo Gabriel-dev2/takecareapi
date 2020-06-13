@@ -21,7 +21,6 @@ public class Login {
 	}
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cpf")
     private String cpf;
 
