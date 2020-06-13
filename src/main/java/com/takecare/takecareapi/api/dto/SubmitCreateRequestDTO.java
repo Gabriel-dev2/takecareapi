@@ -23,4 +23,10 @@ public class SubmitCreateRequestDTO {
     @NotNull
     private int numeroCasa;
 
+    @NotNull
+    private int idPlano;
+
+    @NotNull
+    private String email;
+
 }
