@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 import javax.validation.Valid;
 
 import com.takecare.takecareapi.api.dto.SubmitCreateRequestDTO;
+import com.takecare.takecareapi.api.dto.SubmitEditUserRequestDTO;
 import com.takecare.takecareapi.api.dto.SubmitResponseDTO;
 import com.takecare.takecareapi.api.dto.UserResponseDTO;
 import com.takecare.takecareapi.entities.Paciente;
@@ -70,6 +71,27 @@ public class UserController {
      public ResponseEntity<SubmitResponseDTO> createUser(@RequestBody SubmitCreateRequestDTO submit) {
         SubmitResponseDTO response = this.userService.createUser(submit);
         return ResponseEntity.ok().body(response);
-     }    
+     }
+     
+     @PostMapping(path = "/user/editUser")
+     @ApiOperation(value = "Edit User")
+     @ApiResponses(value = {
+         @ApiResponse(code = 200, message = "User Edited")
+     })
+     public ResponseEntity<SubmitResponseDTO> editUser(@RequestBody SubmitEditUserRequestDTO submit) {
+         ResponseEntity<SubmitResponseDTO> response = null;
+
+         try {
+             SubmitResponseDTO responseDTO = this.userService.editUser(submit);
+             if (responseDTO != null && responseDTO.getMessage().equals("Usuário editado com sucesso")) {
+                 response = new ResponseEntity<SubmitResponseDTO>(responseDTO, HttpStatus.OK);
+             } else {
+                response = new ResponseEntity<SubmitResponseDTO>(responseDTO, HttpStatus.BAD_GATEWAY);
+             }
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         return response;
+     }
 
 }
