@@ -14,6 +14,8 @@ public interface UserService {
 
     Paciente findUserByName(String userName);
 
+    UserResponseDTO findUserByCPF(String cpf);
+
     Paciente listAll();
 
     SubmitResponseDTO editUser(SubmitEditUserRequestDTO request);
