@@ -36,4 +36,6 @@ public class Hospital {
 
     @Column(name = "id_planodesaude")
     private int idPlanoDeSaude;
+
+    public Hospital(){}
 }
