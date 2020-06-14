@@ -98,7 +98,7 @@ public class UserController {
      @ApiOperation(value = "Select user")
      @ApiResponses(value = { @ApiResponse(code = 200, message = "User Found"),
             @ApiResponse(code = 404, message = "User not found") })
-     public ResponseEntity<UserResponseDTO> getUserByCPF(@ApiParam("Paciente CPF") @Valid String cpf) {
+     public ResponseEntity<UserResponseDTO> getUserByCPF(@ApiParam("Paciente CPF") @Valid @PathVariable String cpf) {
         ResponseEntity<UserResponseDTO> response = null;
         try {
             UserResponseDTO dto = this.userService.findUserByCPF(cpf);
