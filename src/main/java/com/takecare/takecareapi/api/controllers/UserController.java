@@ -94,4 +94,23 @@ public class UserController {
          return response;
      }
 
+     @GetMapping(path = "/user/getByCpf/{CPF}")
+     @ApiOperation(value = "Select user")
+     @ApiResponses(value = { @ApiResponse(code = 200, message = "User Found"),
+            @ApiResponse(code = 404, message = "User not found") })
+     public ResponseEntity<UserResponseDTO> getUserByCPF(@ApiParam("Paciente CPF") @Valid String cpf) {
+        ResponseEntity<UserResponseDTO> response = null;
+        try {
+            UserResponseDTO dto = this.userService.findUserByCPF(cpf);
+            if (dto.getPaciente() != null) {
+                response = new ResponseEntity<UserResponseDTO>(dto, HttpStatus.OK);
+            } else {
+                response = new ResponseEntity<UserResponseDTO>(dto, HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+     }
+
 }
