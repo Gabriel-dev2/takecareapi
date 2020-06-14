@@ -17,6 +17,9 @@ public interface PacienteRepository extends JpaRepository<Paciente, Integer> {
     @Query(value = "SELECT * FROM paciente WHERE paciente.nome =?1", nativeQuery = true)
     Paciente findByName(String name);
 
+    @Query(value = "SELECT * FROM paciente WHERE paciente.cpf =?1", nativeQuery = true)
+    Paciente findByCpf(String cpf);
+
     @Modifying
     @Transactional(readOnly = false)
     @Query(value = "UPDATE paciente SET paciente.nome =?1 WHERE paciente.id_paciente =?2", nativeQuery = true)
