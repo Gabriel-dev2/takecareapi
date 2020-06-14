@@ -99,4 +99,19 @@ public class UserServiceImpl implements UserService {
         return responseDTO;
     }
 
+    @Override
+    public UserResponseDTO findUserByCPF(String cpf) {
+        Paciente p = new Paciente();
+
+        UserResponseDTO responseDTO = new UserResponseDTO();
+        try {
+            p = pacienteRepo.findByCpf(cpf);
+            responseDTO.setPaciente(p);  
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return responseDTO;
+    }
+
 }
