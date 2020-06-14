@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import com.takecare.takecareapi.api.dto.SubmitCreateRequestDTO;
 import com.takecare.takecareapi.api.dto.SubmitEditUserRequestDTO;
 import com.takecare.takecareapi.api.dto.SubmitResponseDTO;
+import com.takecare.takecareapi.api.dto.UserByCpfSubmitDTO;
 import com.takecare.takecareapi.api.dto.UserResponseDTO;
 import com.takecare.takecareapi.entities.Paciente;
 import com.takecare.takecareapi.services.UserService;
@@ -94,12 +95,13 @@ public class UserController {
          return response;
      }
 
-     @GetMapping(path = "/user/getByCpf/{CPF}")
-     @ApiOperation(value = "Select user")
+     @PostMapping(path = "/user/getByCpf")
+     @ApiOperation(value = "Select user by cpf")
      @ApiResponses(value = { @ApiResponse(code = 200, message = "User Found"),
             @ApiResponse(code = 404, message = "User not found") })
-     public ResponseEntity<UserResponseDTO> getUserByCPF(@ApiParam("Paciente CPF") @Valid @PathVariable String cpf) {
+     public ResponseEntity<UserResponseDTO> getUserByCPF(@RequestBody UserByCpfSubmitDTO submit) {
         ResponseEntity<UserResponseDTO> response = null;
+        String cpf = submit.getCpf();
         try {
             UserResponseDTO dto = this.userService.findUserByCPF(cpf);
             if (dto.getPaciente() != null) {
