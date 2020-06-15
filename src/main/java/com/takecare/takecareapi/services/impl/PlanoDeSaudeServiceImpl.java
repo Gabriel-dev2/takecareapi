@@ -45,13 +45,12 @@ public class PlanoDeSaudeServiceImpl implements PlanoDeSaudeService {
         try {
             PlanoSaude plano = planoRepository.findById(id);
 
-            response.setPlano(plano);
+            response.setId(plano.getId());
+            response.setNomePlano(plano.getNomePlano());
+            response.setCategoria(plano.getCategoria());
             response.setMessage("OK");
-            
-            if(response.getPlano() == null) {
-                response.setMessage("Usuário não encontrado"); 
-            } 
         } catch (Exception e) {
+            response.setMessage("Plano não cadastrado"); 
             e.printStackTrace();
         }
 
