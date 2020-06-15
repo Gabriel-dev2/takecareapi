@@ -6,7 +6,6 @@ import com.takecare.takecareapi.api.dto.SubmitResponseDTO;
 import com.takecare.takecareapi.api.dto.UserResponseDTO;
 import com.takecare.takecareapi.entities.Login;
 import com.takecare.takecareapi.entities.Paciente;
-import com.takecare.takecareapi.entities.PlanoSaude;
 import com.takecare.takecareapi.repository.LoginRepository;
 import com.takecare.takecareapi.repository.PacienteRepository;
 import com.takecare.takecareapi.services.UserService;
