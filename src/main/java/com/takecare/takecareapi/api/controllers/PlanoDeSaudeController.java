@@ -77,7 +77,7 @@ public class PlanoDeSaudeController {
             BuscarPlanoDeSaudeResponseDTO buscaResponse = this.saudeService.findPlanoById(id);
             if(buscaResponse.getMessage().equals("OK")) {
                 response = new ResponseEntity<BuscarPlanoDeSaudeResponseDTO>(buscaResponse, HttpStatus.OK);
-            } else if(buscaResponse.getMessage().equals("Usuário não encontrado")) {
+            } else if(buscaResponse.getMessage().equals("Plano não cadastrado")) {
                 response = new ResponseEntity<BuscarPlanoDeSaudeResponseDTO>(buscaResponse, HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
