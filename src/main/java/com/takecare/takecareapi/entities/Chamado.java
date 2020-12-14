@@ -1,6 +1,6 @@
 package com.takecare.takecareapi.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +28,7 @@ public class Chamado {
     private String doencas;
 
     @Column(name = "dataehora")
-    private Date dataHora;
+    private LocalDateTime dataHora;
 
     @Column(name = "status")
     private String status;
