@@ -1,6 +1,6 @@
 package com.takecare.takecareapi.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
-@Table(name = "historco")
+@Table(name = "historico")
 
 @Data
 @AllArgsConstructor
@@ -22,10 +22,10 @@ public class Historico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idhistorico")
-    private int idHistorico;
+    private Integer idHistorico;
 
-    @Column(name = "datahora")
-    private Date dataHora;
+    @Column(name = "datahoraa")
+    private LocalDateTime dataHora;
 
     @Column(name = "placaAmbulancia")
     private String placaAmbulancia;
@@ -36,11 +36,19 @@ public class Historico {
     @Column(name = "nomeSintoma")
     private String nomeSintoma;
 
-    @Column(name = "nomeHospital")
+    @Column(name = "nome_hospital")
     private String nomeHospital;
 
     @Column(name = "nomedoPlano")
     private String nomePlano;
 
-    public Historico() {}
+    @Column(name = "id_paciente")
+    private int idPaciente;
+
+    @Column(name = "idlogatendente")
+    private int idlogatendente;
+
+    public Historico() {
+    }
+
 }
