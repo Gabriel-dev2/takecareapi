@@ -31,9 +31,6 @@ public class Hospital {
     @Column(name = "endereco")
     private String endereco;
 
-    @Column(name = "id_paciente")
-    private int idPaciente;
-
     @Column(name = "id_planodesaude")
     private int idPlanoDeSaude;
 
