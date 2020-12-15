@@ -36,7 +36,7 @@ public class HistoricoServiceImpl implements HistoricoService {
 
         Historico h = hist.get(tam - 1);
 
-        LocalDateTime dataLocal = h.getDataHora().atZone(timeZone).toLocalDateTime().minusHours(3);
+        LocalDateTime dataLocal = h.getDataHora().atZone(timeZone).toLocalDateTime();
         historicoResponse.setIdChamado(h.getIdChamado());
         historicoResponse.setDatahora(dataLocal);
         historicoResponse.setIdPaciente(h.getIdPaciente());
