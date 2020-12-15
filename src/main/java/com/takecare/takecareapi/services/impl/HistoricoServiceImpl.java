@@ -31,20 +31,16 @@ public class HistoricoServiceImpl implements HistoricoService {
         List<HistoricoResponseDTO> response = new ArrayList<HistoricoResponseDTO>();
         List<Historico> hist = repository.findByIdPaciente(idPaciente);
         ZoneId timeZone = ZoneId.of("America/Recife");
-       
-        for (Historico h : hist) {
-            if (h.getIdPaciente() == idPaciente) {
-                LocalDateTime dataLocal = h.getDataHora().atZone(timeZone).toLocalDateTime().minusHours(3);
-                historicoResponse.setIdChamado(h.getIdChamado());
-                historicoResponse.setDatahora(dataLocal);
-                historicoResponse.setIdPaciente(h.getIdPaciente());
-                response.add(historicoResponse);
-            } else {
-                    historicoResponse.setMessage("Não há histórico disponível no momento para este paciente");
-                    response.add(historicoResponse);
-                }
-        }
-        
+
+        int tam = hist.size();
+
+        Historico h = hist.get(tam - 1);
+
+        LocalDateTime dataLocal = h.getDataHora().atZone(timeZone).toLocalDateTime().minusHours(3);
+        historicoResponse.setIdChamado(h.getIdChamado());
+        historicoResponse.setDatahora(dataLocal);
+        historicoResponse.setIdPaciente(h.getIdPaciente());
+        response.add(historicoResponse);
 
         return response;
     }
